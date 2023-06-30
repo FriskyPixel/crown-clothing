@@ -36,7 +36,7 @@ const SignUpForm = () => {
         email,
         password
       );
-      const userDoc = await createUserDocumentFromAuth({
+      await createUserDocumentFromAuth({
         ...user,
         displayName,
       });
@@ -81,7 +81,6 @@ const SignUpForm = () => {
           onChange={handleChange}
         />
 
-        <label>Confirm Password</label>
         <FormInput
           label='Confirm Password'
           required
