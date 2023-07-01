@@ -1,4 +1,4 @@
-import './Button.scss';
+import './button.styles.scss';
 
 const BUTTON_STYLE = {
   inverted: 'inverted',

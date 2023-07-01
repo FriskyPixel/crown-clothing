@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import { signOutUser } from '../../utils/firebase';
+import { Link } from 'react-router-dom';
+import { signOutUser } from '../../utils/firebase.utils';
 import { UserContext } from '../../contexts/UserContext';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
-import './Navigation.scss';
+import './navigation.styles.scss';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -29,7 +29,6 @@ const Navigation = () => {
           )}
         </div>
       </div>
-      <Outlet />
     </>
   );
 };
