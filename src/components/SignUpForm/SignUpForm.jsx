@@ -40,7 +40,6 @@ const SignUpForm = () => {
         ...user,
         displayName,
       });
-
       setFormFields(defaultFormFields);
     } catch (err) {
       if (err.code === 'auth/email-already-in-use')

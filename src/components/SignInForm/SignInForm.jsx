@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
 } from '../../utils/firebase';
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
@@ -26,11 +25,7 @@ const SignInForm = () => {
     ev.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      console.log(user);
+      await signInAuthUserWithEmailAndPassword(email, password);
       setFormFields(defaultFormFields);
     } catch (err) {
       switch (err.code) {
@@ -44,11 +39,6 @@ const SignInForm = () => {
           console.error('Error signing in', err);
       }
     }
-  };
-
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
   };
 
   return (
@@ -75,7 +65,11 @@ const SignInForm = () => {
         />
         <div className='buttons-container'>
           <Button type='submit'>Sign In</Button>
-          <Button type='button' buttonStyle='google' onClick={signInWithGoogle}>
+          <Button
+            type='button'
+            buttonStyle='google'
+            onClick={signInWithGooglePopup}
+          >
             Google Sign In
           </Button>
         </div>
