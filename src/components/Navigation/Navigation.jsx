@@ -5,12 +5,7 @@ import { CartContext } from '../../contexts/CartContext';
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
-import {
-  NavigationContainer,
-  LogoContainer,
-  NavLinks,
-  NavLink,
-} from './navigation.styles.js';
+import Styles from './navigation.styles.js';
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -18,23 +13,23 @@ const Navigation = () => {
 
   return (
     <>
-      <NavigationContainer>
-        <LogoContainer to='/'>
+      <Styles.Container>
+        <Styles.LogoContainer to='/'>
           <CrownLogo className='logo' />
-        </LogoContainer>
-        <NavLinks>
-          <NavLink to='shop'>SHOP</NavLink>
+        </Styles.LogoContainer>
+        <Styles.NavLinks>
+          <Styles.NavLink to='shop'>SHOP</Styles.NavLink>
           {currentUser ? (
-            <NavLink as='span' onClick={signOutUser}>
+            <Styles.NavLink as='span' onClick={signOutUser}>
               SIGN OUT
-            </NavLink>
+            </Styles.NavLink>
           ) : (
-            <NavLink to='auth'>SIGN IN</NavLink>
+            <Styles.NavLink to='auth'>SIGN IN</Styles.NavLink>
           )}
           <CartIcon />
-        </NavLinks>
+        </Styles.NavLinks>
         {isCartOpen && <CartDropdown />}
-      </NavigationContainer>
+      </Styles.Container>
     </>
   );
 };
